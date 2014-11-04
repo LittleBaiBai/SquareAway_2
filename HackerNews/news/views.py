@@ -7,14 +7,14 @@ def fetch_top_story():
     import json
     top_stories_url = 'https://hacker-news.firebaseio.com/v0/topstories.json'
     item_url_format = 'https://hacker-news.firebaseio.com/v0/item/{0}.json'
-    get_content = lambda url: urlopen(url).read().decode(‘utf8’)
+    get_content = lambda url: urlopen(url).read().decode('utf8')
 
     story_ids = json.loads(get_content(top_stories_url))
-    stories = sorted(filter(lambda story: datetime.fromtimestamp(int(story[‘time’])).year >= 2006,
+    stories = sorted(filter(lambda story: datetime.fromtimestamp(int(story['time'])).year >= 2006,
         (json.loads(get_content(item_url_format.format(id))) for id in story_ids)),
-        key = lambda story: int(story[‘time’]),
+        key = lambda story: int(story['time']),
         reverse = True)
-    grouped_stories = [{‘date’: datetime.fromtimestamp(int(story[‘time’])), ‘title’: story[‘title’], ‘score’: int(story[‘score’])} for story in stories]
+    grouped_stories = [{'date': datetime.fromtimestamp(int(story['time'])), 'title': story['title'], 'score': int(story['score'])} for story in stories]
     print(grouped_stories)
     return grouped_stories
 
