@@ -5,8 +5,8 @@ def fetch_top_story():
     from urllib.request import urlopen
     from datetime import datetime
     import json
-    top_stories_url = ‘https://hacker-news.firebaseio.com/v0/topstories.json'
-    item_url_format = ‘https://hacker-news.firebaseio.com/v0/item/{0}.json'
+    top_stories_url = 'https://hacker-news.firebaseio.com/v0/topstories.json'
+    item_url_format = 'https://hacker-news.firebaseio.com/v0/item/{0}.json'
     get_content = lambda url: urlopen(url).read().decode(‘utf8’)
 
     story_ids = json.loads(get_content(top_stories_url))
