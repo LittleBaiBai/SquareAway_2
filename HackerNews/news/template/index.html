@@ -1,0 +1,9 @@
+{% if grouped_stories %}
+    <ul>
+    {% for story in grouped_stories %}
+        <li><a href="/news/{{ story.id }}/">{{ story.content }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
